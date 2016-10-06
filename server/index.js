@@ -9,14 +9,7 @@ import handleRender from './handleRender'
 const app = express(), port = 3001;
 const compiler = webpack(webpackConfig)
 
-if(process.env.NODE_ENV === 'dev') {
-  app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: webpackConfig.output.publicPath}))
-  app.use(webpackHotMiddleware(compiler))
 
-  /*
-  Isomorphic ftw.
-   */
-  app.use(handleRender)
-}
+app.use(handleRender)
 
 app.listen(port, (err) => console.log(err || port && `listening on ${port}`))

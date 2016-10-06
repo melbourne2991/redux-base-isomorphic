@@ -30,6 +30,16 @@ export default function handleRender(req, res) {
   })
 }
 
+
+
+let bundle
+
+if(process.env.NODE_ENV === 'dev') {
+  bundle = "http://localhost:3002/assets/bundle.js";
+} else {
+  bundle = "/assets/bundle.js"
+}
+
 function renderFullPage(html, initialState) {
   return `
     <!doctype html>
@@ -44,7 +54,7 @@ function renderFullPage(html, initialState) {
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>
 
-        <script src="/assets/bundle.js"></script>
+        <script src="${bundle}"></script>
       </body>
     </html>
   `

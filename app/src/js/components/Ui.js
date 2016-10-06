@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { TestActions } from '../actions'
 
-export default class Ui extends Component {
+class Ui extends Component {
   constructor(props) {
     super(props)
   }
